@@ -10,7 +10,7 @@ public class SignUp extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         // Retrieve user data from request parameters
-        String name = request.getParameter("username");
+        String name = request.getParameter("name");
         String pin = request.getParameter("pin");
         String college = request.getParameter("college");
         String password= request.getParameter("password");
