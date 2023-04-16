@@ -28,7 +28,6 @@ public class SignUp extends HttpServlet {
             ps.setString(3, college);
             ps.setString(4, password);
             ps.executeUpdate();
-
             PrintWriter out = response.getWriter();
             out.println("Registration Successful!");
         } catch (Exception ex) {
