@@ -15,10 +15,13 @@ public class SignUp extends HttpServlet {
         String college = request.getParameter("college");
         String password= request.getParameter("password");
 
-        // Insert user data into database
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gpt?autoReconnect=true&useSSL=false", "root", "vicky");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/?autoReconnect=true&useSSL=false", "root", "vicky");
+            Statement smt = con.createStatement();
+            smt.executeUpdate("create database if not exists gpt");
+            smt.executeUpdate("use gpt");
+            smt.executeUpdate("create table if not exists student(name text, pin text, college text, password text)");
             PreparedStatement ps = con.prepareStatement("insert into student values(?,?,?,?)");
             ps.setString(1, name);
             ps.setString(2, pin);
