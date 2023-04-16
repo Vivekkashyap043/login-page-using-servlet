@@ -12,8 +12,7 @@ public class Login extends HttpServlet {
         // Retrieve user credentials from request parameters
         String name = request.getParameter("name");
         String password = request.getParameter("password");
-
-        // Query database to verify user credentials
+        
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/gpt?autoReconnect=true&useSSL=false", "root", "vicky");
@@ -21,11 +20,9 @@ public class Login extends HttpServlet {
             ps.setString(1, name);
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
-            String n = "vivek";
             if (rs.next()) {
                 PrintWriter out = response.getWriter();
-                n = rs.getString(1);
-                out.println("Hello,  "+n+" you Login Successfully!");
+                out.println("Hello,  "+rs.getString(1)+" you Login Successfully!");
             } else {
                 PrintWriter out = response.getWriter();
                 out.println("Login Failed: Invalid Username or Password");
