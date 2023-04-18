@@ -17,7 +17,7 @@ public class SignUp extends HttpServlet {
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/?autoReconnect=true&useSSL=false", "root", "vicky");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/", "root", "vicky");
             Statement smt = con.createStatement();
             smt.executeUpdate("create database if not exists gpt");
             smt.executeUpdate("use gpt");
