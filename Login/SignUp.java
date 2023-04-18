@@ -5,11 +5,10 @@ import javax.servlet.http.*;
 
 public class SignUp extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         response.setContentType("text/html");
-
-        // Retrieve user data from request parameters
+        
         String name = request.getParameter("name");
         String pin = request.getParameter("pin");
         String college = request.getParameter("college");
@@ -29,10 +28,11 @@ public class SignUp extends HttpServlet {
             ps.setString(4, password);
             ps.executeUpdate();
             PrintWriter out = response.getWriter();
-            out.println("Registration Successful!");
-        } catch (Exception ex) {
+            out.println("You registered Successfully!");
+        } 
+        catch (Exception e) {
             PrintWriter out = response.getWriter();
-            out.println("Registration Failed: " + ex.getMessage());
+            out.println(e);
         }
     }
 }
